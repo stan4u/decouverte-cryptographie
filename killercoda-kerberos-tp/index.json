@@ -1,23 +1,11 @@
 {
   "title": "Déployer une authentification Kerberos pour SSH",
-  "description": "Mettre en place un KDC Kerberos et configurer l'authentification SSH via GSSAPI entre deux machines.",
+  "description": "Mettre en place un KDC Kerberos et configurer l'authentification SSH entre deux machines.",
   "details": {
     "steps": [
       {
         "title": "1. Préparation et installation du KDC",
         "text": "step1.md"
-      },
-      {
-        "title": "2. Création des principaux Kerberos",
-        "text": "step2.md"
-      },
-      {
-        "title": "3. Configuration du serveur SSH cible",
-        "text": "step3.md"
-      },
-      {
-        "title": "4. Configuration du client et test final",
-        "text": "step4.md"
       }
     ],
     "intro": {
@@ -29,15 +17,24 @@
     }
   },
   "backend": {
-    "imageid": "ubuntu",
-    "type": "vms",
-    "nodes": [
-      { "name": "kdc" },
-      { "name": "ssh-server" }
-    ]
+    "imageid": "ubuntu"
   },
-  "environment": {
-    "uilayout": "terminal",
-    "uisettings": "split-terminal"
+  "interface": {
+    "layout": "ide",
+    "panels":[
+      {
+        "type":"terminal",
+        "logins": [
+          {
+            "id": "node1",
+            "title": "Première Machine"
+          },
+          {
+            "id": "node2",
+            "title": "Deuxième Machine"
+          }
+        ]
+      }
+    ]
   }
 }
