@@ -8,18 +8,18 @@ Dans un environnement de production, multiplier les clés SSH ou saisir constamm
 
 L'objectif de ce TP est de configurer une architecture d'authentification centralisée (Single Sign-On - SSO). À la fin de ce tp, vous serez capable de vous connecter de la machine Client à la machine Serveur en tâche de fond, **sans jamais avoir à échanger de clés SSH publiques ni à taper de mot de passe SSH**.
 
-## 🏗️ Architecture du Laboratoire
+## 🏗️ Architecture du TP
 
 Pour ce TP, Killercoda met à votre disposition deux terminaux distincts :
 
 1. **Serveur KDC (`controlplane`)** : 
    * Il jouera le rôle de **KDC** (Key Distribution Center).
    * Il fera également office de serveur SSH cible auquel nous tenterons de nous connecter.
-   * *Nom de domaine configuré :* `kdc.serveur`
+   * *Nom de domaine configuré :* `kdc.local`
 
 2. **Client SSH (`node01`)** : 
    * C'est la machine de l'utilisateur. C'est d'ici que vous demanderez vos tickets Kerberos.
-   * *Nom de domaine configuré :* `client`
+   * *Nom de domaine configuré :* `client.local`
 
 ## 🧠 Ce que vous allez apprendre
 

@@ -4,22 +4,22 @@
 IP_SERVER=$(ip route get 1.1.1.1 | awk '{print $7; exit}')
 IP_CLIENT=$(ssh node01 "ip route get 1.1.1.1" | awk '{print $7; exit}')
 
-# 2. Configuration des noms des machines
-hostnamectl set-hostname kdc.serveur
-ssh node01 "hostnamectl set-hostname client"
-
-# 3. Configuration du fichier /etc/hosts sur le Serveur (controlplane)
+# 2. Configuration du fichier /etc/hosts sur le Serveur (controlplane)
 echo "" >> /etc/hosts
 echo "# Configuration du TP Kerberos" >> /etc/hosts
-echo "$IP_SERVER kdc.serveur serveur" >> /etc/hosts
-echo "$IP_CLIENT client client" >> /etc/hosts
+echo "$IP_SERVER kdc.local serveur" >> /etc/hosts
+echo "$IP_CLIENT client.local client" >> /etc/hosts
 
-# 4. Configuration du fichier /etc/hosts sur le Client (node01) via SSH
+# 3. Configuration du fichier /etc/hosts sur le Client (node01) via SSH
 ssh node01 "echo '' >> /etc/hosts"
 ssh node01 "echo '# Configuration du TP Kerberos' >> /etc/hosts"
-ssh node01 "echo '$IP_SERVER kdc.serveur serveur' >> /etc/hosts"
-ssh node01 "echo '$IP_CLIENT client client' >> /etc/hosts"
+ssh node01 "echo '$IP_SERVER kdc.local serveur' >> /etc/hosts"
+ssh node01 "echo '$IP_CLIENT client.local client' >> /etc/hosts"
 
-# 5. Pré-mise à jour des paquets en tâche de fond pour accélérer l'installation
+# 4. Pré-mise à jour des paquets en tâche de fond pour accélérer l'installation
 apt-get update -y
 ssh node01 "apt-get update -y"
+
+# 5. Signal de fin pour le système
+touch /tmp/background-finished
+ssh node01 "touch /tmp/background-finished"
