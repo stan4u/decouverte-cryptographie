@@ -26,18 +26,27 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2-nodes"
+    },
+    "interface": {
+      "layout": "ide",
+      "panels": [
+        {
+          "type": "terminal",
+          "logins": [
+            {
+              "id": "controlplane",
+              "title": "Controlplane"
+            },
+            {
+              "id": "node01",
+              "title": "Worker Node"
+            }
+          ]
+        }
+      ]
     }
-  },
-  "backend": {
-    "imageid": "ubuntu",
-    "type": "vms",
-    "nodes": [
-      { "name": "kdc" },
-      { "name": "ssh-server" }
-    ]
-  },
-  "environment": {
-    "uilayout": "terminal",
-    "uisettings": "split-terminal"
   }
 }
