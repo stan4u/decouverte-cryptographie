@@ -1,6 +1,9 @@
 {
   "title": "Déployer une authentification Kerberos pour SSH",
   "description": "Mettre en place un KDC Kerberos et configurer l'authentification SSH via GSSAPI entre deux machines.",
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  },
   "details": {
     "steps": [
       {
@@ -26,9 +29,6 @@
     },
     "finish": {
       "text": "finish.md"
-    },
-    "backend": {
-      "imageid": "kubernetes-kubeadm-2nodes"
     },
     "interface": {
       "layout": "ide",
